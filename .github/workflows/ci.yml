@@ -23,6 +23,10 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      # Verify .NET version
+      - name: Check .NET Version
+        run: dotnet --version
+
       # Restore dependencies
       - name: Restore Dependencies
         run: dotnet restore
