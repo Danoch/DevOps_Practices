@@ -17,21 +17,25 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Install .NET Core environment with .NET 9.0
+      # Install .NET 9.0
       - name: Install .NET 9.0
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
 
-      # Verify .NET version
-      - name: Check .NET Version
-        run: dotnet --version
+      # Verify Installed .NET Version
+      - name: Verify Installed .NET Version
+        run: dotnet --info
 
-      # Restore dependencies
+      # Clear NuGet Cache
+      - name: Clear NuGet Cache
+        run: dotnet nuget locals all --clear
+
+      # Restore Dependencies
       - name: Restore Dependencies
         run: dotnet restore
 
-      # Build the application
+      # Build the Application
       - name: Build Application
         run: dotnet build --no-restore
 
